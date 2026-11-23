@@ -11,7 +11,7 @@ Learn how industrial robots are controlled and write robot control programs for 
 - Schunk gripper
 - Grey cube as the object to manipulate
 
-![ABB GoFa robot and the lab setup](images/abb_gofa_setup.jpg)
+![ABB GoFa robot and the lab setup](abb_gofa_setup.jpg)
 
 ## What I did
 - [x] Learned the pendant controls and safety features: emergency stop button, manual mode, reduced jog speed (25%)
@@ -41,20 +41,20 @@ The programs were transcribed from photos of the teach pendant. Target coordinat
 | `Shape` | Moves through three taught points and returns to the first |
 | `Myprogram` | Goes to a start position, opens the gripper, moves to the pick-up point, closes the gripper, moves to the place approach and place positions, then releases the object |
 
-![Gripper holding the cube](images/abb_gofa_gripper_cube.jpg)
+![Gripper holding the cube](abb_gofa_gripper_cube.jpg)
 
 ## Pendant screens
 **Program with the gripper, shape and pick-and-place procedures**
-![Program procedures on the pendant](images/pendant_program_procedures.jpg)
+![Program procedures on the pendant](pendant_program_procedures.jpg)
 
 **Target declarations and main procedure**
-![Target declarations on the pendant](images/pendant_program_targets.jpg)
+![Target declarations on the pendant](pendant_program_targets.jpg)
 
 **Speed demo with the program editor menu**
-![Speed demo on the pendant](images/pendant_speed_demo.jpg)
+![Speed demo on the pendant](pendant_speed_demo.jpg)
 
 **Jog settings: World coordinate system, Linear jog mode, 25% jog speed**
-![Jog settings on the pendant](images/pendant_jog_settings.jpg)
+![Jog settings on the pendant](pendant_jog_settings.jpg)
 
 ## Key RAPID concepts used
 - `MoveJ target, speed, zone, tool`: joint movement to a target, with speed data (`v1000`, `v5000`, `v50`) and zone data (`z10`, `z50`)
