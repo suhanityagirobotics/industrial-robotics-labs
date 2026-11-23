@@ -1,115 +1,70 @@
+# Lab 01: ABB GoFa (CRB 15000) Robot Programming
 
-# Lab 01 — ABB GoFa CRB 15000 Robot Programming
+Laboratory work at VILNIUS TECH (Applied Artificial Intelligence, course *Robots, Intelligent Automation*) on programming and operating an industrial robot. This repository documents the programs written in RAPID for an ABB GoFa collaborative robot (CRB 15000) with a gripper, using the ABB teach pendant.
 
-## Overview
+## Aim
+Learn how industrial robots are controlled and write robot control programs for a robot specified by the teacher.
 
-This laboratory focuses on practical industrial robot programming and control using the ABB GoFa CRB 15000 collaborative robot.
+## Equipment
+- ABB GoFa (CRB 15000) collaborative robot
+- ABB teach pendant (touchscreen with joystick, emergency stop and program editor)
+- Schunk gripper
+- Grey cube as the object to manipulate
 
-The work involved familiarization with the robot and its control interface, programming robot positions, executing joint and linear movements, adjusting motion parameters, and operating an end-effector gripper for object manipulation.
+![ABB GoFa robot and the lab setup](images/abb_gofa_setup.jpg)
 
-The laboratory provided practical experience with ABB RAPID programming and industrial robot operation.
+## What I did
+- [x] Learned the pendant controls and safety features: emergency stop button, manual mode, reduced jog speed (25%)
+- [x] Wrote robot control programs in RAPID
+- [x] Changed the movement speed (v5000 and v50 in the speed demo, jog speed in manual mode)
+- [x] Created and used taught target positions (`robtarget`)
+- [x] Jogged the robot in different jog modes (Axis 1-3 and Linear) in the World coordinate system
+- [x] Controlled the gripper (open and close procedures)
+- [x] Repeated a motion a set number of times (`FOR` loop, 5 repetitions)
+- [x] Moved the robot along a path through three taught points
+- [x] Added pauses of different lengths between movements (`WaitTime` of 1, 2 and 3 seconds)
+- [x] Programmed a pick and place of an object
 
-## 1. Aim
+## Programs
+| File | What it does |
+|------|--------------|
+| [speed_demo.mod](speed_demo.mod) | Moves to the home position, then to two taught points at a high speed (v5000) and a low speed (v50) |
+| [pick_and_place.mod](pick_and_place.mod) | Home position and repeat loop, gripper test, three-point path, and a pick and place procedure |
 
-To understand the operation, programming, and motion control of an industrial collaborative robot and develop programs for controlling robot movements and performing object manipulation tasks.
+The programs were transcribed from photos of the teach pendant. Target coordinates are shown as `...`, and the gripper procedures `AOpenGripper` and `ACloseGripper` are defined in a separate module that is not included.
 
-## 2. Hardware and Equipment
+### Procedures in `pick_and_place.mod`
+| Procedure | Description |
+|-----------|-------------|
+| `main` | Moves to the home position, then repeats a move to `P1` five times |
+| `grippertest` | Opens the gripper, waits 2 s, closes it, waits 2 s, opens it again |
+| `Shape` | Moves through three taught points and returns to the first |
+| `Myprogram` | Goes to a start position, opens the gripper, moves to the pick-up point, closes the gripper, moves to the place approach and place positions, then releases the object |
 
-| Component | Description |
-|---|---|
-| Robot | ABB GoFa CRB 15000 |
-| Robot type | Collaborative articulated industrial robot |
-| Programming interface | ABB teach pendant |
-| Programming language | ABB RAPID |
-| End effector | Gripper |
-| Manipulated object | Test cube |
-| Workstation | Industrial robotics laboratory |
+![Gripper holding the cube](images/abb_gofa_gripper_cube.jpg)
 
-## 3. Programming Environment
+## Pendant screens
+**Program with the gripper, shape and pick-and-place procedures**
+![Program procedures on the pendant](images/pendant_program_procedures.jpg)
 
-The robot was programmed using the ABB programming interface and RAPID programming language.
+**Target declarations and main procedure**
+![Target declarations on the pendant](images/pendant_program_targets.jpg)
 
-The program structure included:
-- MODULE and ENDMODULE
-- PROC and ENDPROC
-- CONST declarations
-- robtarget position definitions
-- Motion instructions
-- Gripper control routines
+**Speed demo with the program editor menu**
+![Speed demo on the pendant](images/pendant_speed_demo.jpg)
 
-## 4. Robot Programming and Implementation
+**Jog settings: World coordinate system, Linear jog mode, 25% jog speed**
+![Jog settings on the pendant](images/pendant_jog_settings.jpg)
 
-### 4.1 Defining Robot Positions
+## Key RAPID concepts used
+- `MoveJ target, speed, zone, tool`: joint movement to a target, with speed data (`v1000`, `v5000`, `v50`) and zone data (`z10`, `z50`)
+- `robtarget`: a taught position, stored as a constant
+- `FOR ... ENDFOR`: repeat a motion a set number of times
+- `WaitTime`: pause between movements
+- Procedures (`PROC`): reusable blocks such as gripper open and close
 
-Robot target positions were defined using the `robtarget` data type.
-
-The program included predefined positions such as:
-- Home position
-- P1
-- P2
-
-These positions were used as destinations for programmed robot movements.
-
-### 4.2 Joint Movement
-
-The `MoveJ` instruction was used to move the robot between programmed target positions using coordinated joint movement.
-
-### 4.3 Linear Movement
-
-The `MoveL` instruction was used for linear movement of the robot's tool between programmed positions.
-
-### 4.4 Speed Control
-
-Different movement speed parameters were used in the program to study how speed settings influence robot motion.
-
-### 4.5 Gripper Control
-
-Gripper control routines were included to operate the end effector.
-
-The observed programming instructions included:
-- OpenGripper
-- CloseGripper
-- WaitTime
-
-These instructions were used to control gripping actions and introduce delays between operations.
-
-## 5. Experimental Work
-
-The practical work included:
-
-1. Familiarization with the ABB GoFa robot and its control interface.
-2. Defining robot target positions.
-3. Programming joint and linear movements.
-4. Modifying movement parameters.
-5. Creating and editing robot instructions.
-6. Programming gripper operations.
-7. Working with an object using the robot's end effector.
-
-## 6. Results and Observations
-
-The practical exercises provided experience in programming industrial robot movements and controlling an end effector.
-
-The difference between joint and linear movements was explored. Robot target positions and movement parameters were defined through the programming interface.
-
-The gripper control routines demonstrated how robot motion and end-effector operations can be combined in an automated task.
-
-## 7. Skills Developed
-
-- ABB industrial robot operation
-- RAPID programming
-- Robot target positioning
-- Joint and Cartesian motion concepts
-- Motion speed adjustment
-- Gripper control
-- Object manipulation
-- Industrial automation fundamentals
-
-## 8. Conclusion
-
-This laboratory provided practical experience with the ABB GoFa CRB 15000 collaborative robot. It helped develop an understanding of industrial robot programming, movement instructions, target positioning, speed control, and gripper operation.
-
-The work also demonstrated how programmed robot movements and end-effector commands can be combined to perform object manipulation tasks.
-
-## 9. Experimental Evidence
-
-Photographs, programming screenshots, source code, and video demonstrations will be included in this repository to document the practical implementation.
+## What I learned
+- Teaching and naming target positions with the pendant
+- How speed and zone data change the way the robot moves
+- Splitting a task into procedures, such as a gripper test and a pick and place
+- Safe operation in manual mode with a reduced jog speed
