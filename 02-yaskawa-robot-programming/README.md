@@ -62,6 +62,10 @@ Call flow: `TTT-TURN` → `TTT-1` → `TTT-WB` (win, then block) → `TTT-MOVE`.
 2. Run job `TTT-TURN`
 3. The robot picks its cell and draws an O
 
+## Video Demonstration
+
+[▶ Watch the Yaskawa Robot Playing Tic-Tac-Toe](./yaskawa-tic-tac-toe-demonstration.mp4)   
+
 ## Notes
 
 - The `.txt` files here are the INFORM instructions only. Taught positions (`P000`–`P054`) are stored in the controller and depend on where the board sits relative to the robot, so re-teach them for a new setup.
