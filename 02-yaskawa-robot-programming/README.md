@@ -2,8 +2,9 @@
 
 A Yaskawa robot arm that plays tic-tac-toe against a human on a whiteboard. The robot holds a marker and draws its **O** in the chosen cell. All game logic is written directly in Yaskawa **INFORM** on the robot controller, with no PC or external program involved.
 
-![Robot at the whiteboard](Robot at the whiteboard.jpeg)
-![Robot drawing a circle](Robot drawing a circle.png)
+![Robot at the whiteboard](images/robot-at-whiteboard.jpeg)
+
+![Robot drawing a circle](images/robot-drawing-circle.png)
 
 ## Hardware
 
